@@ -1,19 +1,26 @@
 import React from "react";
 import { Text, SafeAreaView, StyleSheet, Image, View, TouchableOpacity, TextInput, ScrollView } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function Home() {
+
+    const [categoria, setCategoria] = useState("");
+    const [descricao, setDescricao] = useState("");
+
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle="light-content" />
             <Image source={require("../assets/logo.png")} style={styles.logo} />
             <View style={styles.forms}>
                 <Text style={styles.title}>Cadastro de Categoria</Text>
-                <Image source={require("../assets/images/Banner.png")} style={styles.imagem} / >
+                <Image source={require("../assets/images/Banner.png")} style={styles.imagem} />
                 <View style={styles.inputArea}>
                     <Ionicons name='create-outline' size={25} color="#000" />
                     <TextInput
+                        value={categoria}
+                        onChangeText={setCategoria}
                         style={styles.input}
                         placeholder="Nome da Categoria"
                         placeholderTextColor="#05050520"
@@ -26,6 +33,8 @@ export default function Home() {
                     </View>
                     <ScrollView>
                         <TextInput
+                            value={descricao}
+                            onChangeText={setDescricao}
                             style={[styles.input, styles.multilineInput]}
                             placeholder="Descrição da Categoria"
                             placeholderTextColor="#05050520"
@@ -36,7 +45,12 @@ export default function Home() {
                         />
                     </ScrollView>
                 </View>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button}
+                    onPress={
+                        () => {
+                            alert(`Categoria ${categoria} cadastrada com sucesso! `);
+                        }
+                    }>
                     <Text style={styles.buttonText}>Cadastrar</Text>
                 </TouchableOpacity>
             </View>
@@ -113,3 +127,4 @@ const styles = StyleSheet.create({
     },
 
 });
+
