@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, SafeAreaView, StyleSheet, Image, View, TouchableOpacity, TextInput, ScrollView } from "react-native";
+import { Text, SafeAreaView, StyleSheet, Image, View, TouchableOpacity, TextInput } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
@@ -11,27 +11,26 @@ export default function Home() {
 
     return (
         <SafeAreaView style={styles.container}>
-            <StatusBar barStyle="light-content" />
-            <Image source={require("../assets/logo.png")} style={styles.logo} />
-            <View style={styles.forms}>
-                <Text style={styles.title}>Cadastro de Categoria</Text>
-                <Image source={require("../assets/images/Banner.png")} style={styles.imagem} />
-                <View style={styles.inputArea}>
-                    <Ionicons name='create-outline' size={25} color="#000" />
-                    <TextInput
-                        value={categoria}
-                        onChangeText={setCategoria}
-                        style={styles.input}
-                        placeholder="Nome da Categoria"
-                        placeholderTextColor="#05050520"
-                        maxLength={250}
-                    />
-                </View>
-                <View style={styles.inputArea}>
-                    <View style={styles.inputIcon}>
-                        <Ionicons name='document-text-outline' size={25} color="#000" />
+                <StatusBar barStyle="light-content" />
+                <Image source={require("../assets/logo.png")} style={styles.logo} />
+                <View style={styles.forms}>
+                    <Text style={styles.title}>Cadastro de Categoria</Text>
+                    <Image source={require("../assets/images/Banner.png")} style={styles.imagem} />
+                    <View style={styles.inputArea}>
+                        <Ionicons name='create-outline' size={25} color="#000" />
+                        <TextInput
+                            value={categoria}
+                            onChangeText={setCategoria}
+                            style={styles.input}
+                            placeholder="Nome da Categoria"
+                            placeholderTextColor="#05050520"
+                            maxLength={250}
+                        />
                     </View>
-                    <ScrollView>
+                    <View style={styles.inputAreaDescricao}>
+                        <View style={styles.inputIcon}>
+                            <Ionicons name='document-text-outline' size={25} color="#000" />
+                        </View>
                         <TextInput
                             value={descricao}
                             onChangeText={setDescricao}
@@ -43,17 +42,16 @@ export default function Home() {
                             numberOfLines={10}
                             maxLength={500}
                         />
-                    </ScrollView>
+                    </View>
+                    <TouchableOpacity style={styles.button}
+                        onPress={
+                            () => {
+                                alert(`Categoria ${categoria} cadastrada com sucesso! `);
+                            }
+                        }>
+                        <Text style={styles.buttonText}>Cadastrar</Text>
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.button}
-                    onPress={
-                        () => {
-                            alert(`Categoria ${categoria} cadastrada com sucesso! `);
-                        }
-                    }>
-                    <Text style={styles.buttonText}>Cadastrar</Text>
-                </TouchableOpacity>
-            </View>
         </SafeAreaView>
     );
 };
@@ -124,6 +122,17 @@ const styles = StyleSheet.create({
         height: 200,
         borderRadius: 5,
         marginBottom: 20,
+    },
+    inputAreaDescricao: {
+        flexDirection: "row",
+        paddingVertical: 10,
+        width: "100%",
+        backgroundColor: "#fff",
+        borderRadius: 5,
+        paddingLeft: 15,
+        marginBottom: 15,
+        elevation: 2,
+        height: 200,
     },
 
 });
