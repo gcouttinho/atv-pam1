@@ -9,49 +9,72 @@ export default function Home() {
     const [categoria, setCategoria] = useState("");
     const [descricao, setDescricao] = useState("");
 
+    function adicionarCategoria() {
+        if (categoria == "") {
+            alert("Preencha o campo categoria!");
+            return;
+        }
+        if (descricao == "") {
+            alert("Preencha o campo descrição!");
+            return;
+        }
+        if (categoria.length < 5) {
+            alert("O campo categoria deve ter no mínimo 5 caracteres!");
+            return;
+        }
+        if (descricao.length < 5) {
+            alert("O campo descrição deve ter no mínimo 5 caracteres!");
+            return;
+        }
+        if (categoria.length < 5 && descricao.length < 5) {
+            alert(`Categoria ${categoria} cadastrada com sucesso! `);
+            return;
+        }
+    }
+
     return (
         <SafeAreaView style={styles.container}>
-                <StatusBar barStyle="light-content" />
-                <Image source={require("../assets/logo.png")} style={styles.logo} />
-                <View style={styles.forms}>
-                    <Text style={styles.title}>Cadastro de Categoria</Text>
-                    <Image source={require("../assets/images/Banner.png")} style={styles.imagem} />
-                    <View style={styles.inputArea}>
-                        <Ionicons name='create-outline' size={25} color="#000" />
-                        <TextInput
-                            value={categoria}
-                            onChangeText={setCategoria}
-                            style={styles.input}
-                            placeholder="Nome da Categoria"
-                            placeholderTextColor="#05050520"
-                            maxLength={250}
-                        />
-                    </View>
-                    <View style={styles.inputAreaDescricao}>
-                        <View style={styles.inputIcon}>
-                            <Ionicons name='document-text-outline' size={25} color="#000" />
-                        </View>
-                        <TextInput
-                            value={descricao}
-                            onChangeText={setDescricao}
-                            style={[styles.input, styles.multilineInput]}
-                            placeholder="Descrição da Categoria"
-                            placeholderTextColor="#05050520"
-                            editable
-                            multiline
-                            numberOfLines={10}
-                            maxLength={500}
-                        />
-                    </View>
-                    <TouchableOpacity style={styles.button}
-                        onPress={
-                            () => {
-                                alert(`Categoria ${categoria} cadastrada com sucesso! `);
-                            }
-                        }>
-                        <Text style={styles.buttonText}>Cadastrar</Text>
-                    </TouchableOpacity>
+            <StatusBar barStyle="light-content" />
+            <Image source={require("../assets/logo.png")} style={styles.logo} />
+            <View style={styles.forms}>
+                <Text style={styles.title}>Cadastro de Categoria</Text>
+                <Image source={require("../assets/images/Banner.png")} style={styles.imagem} />
+                <View style={styles.inputArea}>
+                    <Ionicons name='create-outline' size={25} color="#000" />
+                    <TextInput
+                        value={categoria}
+                        onChangeText={setCategoria}
+                        style={styles.input}
+                        placeholder="Nome da Categoria"
+                        placeholderTextColor="#05050520"
+                        maxLength={250}
+                    />
                 </View>
+                <View style={styles.inputAreaDescricao}>
+                    <View style={styles.inputIcon}>
+                        <Ionicons name='document-text-outline' size={25} color="#000" />
+                    </View>
+                    <TextInput
+                        value={descricao}
+                        onChangeText={setDescricao}
+                        style={[styles.input, styles.multilineInput]}
+                        placeholder="Descrição da Categoria"
+                        placeholderTextColor="#05050520"
+                        editable
+                        multiline={true}
+                        numberOfLines={10}
+                        maxLength={500}
+                    />
+                </View>
+                <TouchableOpacity style={styles.button}
+                    onPress={
+                        () => {
+                            adicionarCategoria();
+                        }
+                    }>
+                    <Text style={styles.buttonText}>Cadastrar</Text>
+                </TouchableOpacity>
+            </View>
         </SafeAreaView>
     );
 };
