@@ -10,7 +10,7 @@ export default function Home() {
             <Image source={require("../assets/logo.png")} style={styles.logo} />
             <View style={styles.forms}>
                 <Text style={styles.title}>Cadastro de Categoria</Text>
-                <Image source={require("../assets/images/Banner.png")} style={styles.imagem} / >
+                <Image source={require("../assets/images/Banner.png")} style={styles.imagem} />
                 <View style={styles.inputArea}>
                     <Ionicons name='create-outline' size={25} color="#000" />
                     <TextInput
@@ -42,7 +42,7 @@ export default function Home() {
             </View>
         </SafeAreaView>
     );
-};
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -111,5 +111,5 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginBottom: 20,
     },
-
 });
+23
