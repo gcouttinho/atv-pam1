@@ -15,10 +15,6 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Cadastro" component={Cadastro} />
         <Stack.Screen name="Perfil" component={Perfil}/>
-{/*           options={{
-            headerLeft: () => null, // Remova o botão de voltar padrão
-            gestureEnabled: false, // Desative o gesto de retorno
-          }} */}
       </Stack.Navigator>
     </NavigationContainer>
   );
